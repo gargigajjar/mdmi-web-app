@@ -29,10 +29,7 @@ export class CreateServiceComponent {
 
   onSubmit() {
     this.updateSelectedMaps();
-    if (this.updateSelectedMaps.length < 2) {
-      alert('Please select at least two checkboxes.');
-      return;
-    }
+    
     this.router.navigate(['/service-test'], {
       queryParams: {
         ServiceName: this.ServiceName,
