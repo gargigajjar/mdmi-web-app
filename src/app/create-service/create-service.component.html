@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+        <h2 class="text-center text-primary mb-4">MDMI Service</h2>
+
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="mb-3">
+                <label for="ServiceName" class="form-label required">Service Name</label>
+                <input type="text" id="ServiceName" class="form-control" [(ngModel)]="ServiceName" name="ServiceName"
+                    required #textServiceNameRef="ngModel" />
+                <div class="text-danger" *ngIf="textServiceNameRef.invalid && textServiceNameRef.touched">This field is
+                    required.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="ServiceVersion" class="form-label required">Service Version</label>
+                <input type="text" id="ServiceVersion" class="form-control" [(ngModel)]="ServiceVersion"
+                    name="ServiceVersion" required #textServiceVersionRef="ngModel" />
+                <div class="text-danger" *ngIf="textServiceVersionRef.invalid && textServiceVersionRef.touched">This
+                    field is required.</div>
+            </div>
+
+            <br>
+            <div class="mb-3">
+                <label class="form-label">Select MDMI Maps</label>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="FHIRR4JSON" [(ngModel)]="FHIRR4JSON"
+                        name="FHIRR4JSON" />
+                    <label class="form-check-label checkboxtext" for="FHIRR4JSON">FHIR R4 Json</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="CCDAR2" [(ngModel)]="CCDAR2" name="CCDAR2" />
+                    <label class="form-check-label checkboxtext" for="CCDAR2">CCDA 2.1 xml</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="HL7V2" [(ngModel)]="HL7V2" name="HL7V2" />
+                    <label class="form-check-label checkboxtext" for="HL7V2">HL7 V2.8 txt</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="X12278" [(ngModel)]="X12278" name="X12278" />
+                    <label class="form-check-label checkboxtext" for="X12278">X12 278 edi</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="csv" [(ngModel)]="csv" name="csv" />
+                    <label class="form-check-label checkboxtext" for="csv">CSV Students csv</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="sql" [(ngModel)]="sql" name="sql" />
+                    <label class="form-check-label checkboxtext" for="sql">SQL InsertStatement txt</label>
+                </div>
+                <div *ngIf="selectedMapsNumber < 2" class="text-danger mb-3 instructions">
+                    <strong>Please select at least two Maps.</strong>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary w-100"
+                [disabled]="form.invalid || selectedMapsNumber < 2">Create Service</button>
+            <a href="#" class="ask-question" onclick="askQuestion()">Create a custom MDMI map?</a>
+        </form>
+    </div>
+</div>

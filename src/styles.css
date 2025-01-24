@@ -1,0 +1,14 @@
+body {
+    background-image: url('assets/images/Servicebg.jpg'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-bottom: 5rem;
+  }

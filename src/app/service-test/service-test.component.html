@@ -1,0 +1,12 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+      <h2 class="text-center text-success">{{ ServiceName }} : {{ ServiceVersion }}</h2>
+      
+      <p><strong>Service Name:</strong> {{ ServiceName }}</p>
+      <p><strong>Service Version:</strong> {{ ServiceVersion }}</p>
+      <p><strong>Selected Maps:</strong> {{ SelectedMaps }}</p>
+  
+      <a routerLink="/" class="btn btn-secondary mt-3" (click)="goBack()">Go Back</a>
+    </div>
+  </div>
+  

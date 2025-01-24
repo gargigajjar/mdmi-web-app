@@ -1,0 +1,55 @@
+.container {
+    max-width: 500px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #0056b3, #003580);
+}
+
+.text-primary {
+    font-weight: bold;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.ask-question {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ask-question:hover {
+    color: #0056b3;
+}
+
+label.required::after {
+    content: " *";
+    color: red;
+    font-weight: bold;
+}
+
+.checkboxtext{
+    font-size: 0.9rem;
+}
+
+.instructions{
+    font-size: 0.8rem;
+}
