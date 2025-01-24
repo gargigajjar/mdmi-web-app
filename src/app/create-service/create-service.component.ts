@@ -64,6 +64,7 @@ export class CreateServiceComponent {
   }
 
   get selectedMapsNumber(): number {
+    this.updateSelectedMaps;
     return this.selectedMaps.length;
   }
 
