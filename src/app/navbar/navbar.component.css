@@ -21,7 +21,10 @@
 
 img {
     width: 10rem;
-    /* the height will scale proportionally */
+}
+
+img:hover {
+    opacity: 0.8;
 }
 
 .nav-links {
@@ -38,7 +41,7 @@ img {
 .nav-links a {
     color: #0056b3;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     padding: 5px 10px;
 }

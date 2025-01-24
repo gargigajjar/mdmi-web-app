@@ -1,30 +1,35 @@
 import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-service',
   standalone: true,
-  imports: [NgIf, FormsModule],
+  imports: [NgFor, FormsModule, CommonModule],
   templateUrl: './create-service.component.html',
   styleUrl: './create-service.component.css'
 })
 export class CreateServiceComponent {
   ServiceName: string = '';
   ServiceVersion: string = '';
-  FHIRR4JSON: boolean = false;
-  CCDAR2: boolean = false;
-  HL7V2: boolean = false;
-  X12278: boolean = false;
-  csv: boolean = false;
-  sql: boolean = false;
-  submitted: boolean = false;
+  Maps = [
+    { label: 'FHIR R4 Json', name: 'FHIRR4JSON', checked: false },
+    { label: 'CCDA 2.1 xml', name: 'CDAR2', checked: false },
+    { label: 'HL7 V2.8 txt', name: 'HL7V2', checked: false },
+    { label: 'X12 278 edi', name: 'X12278', checked: false },
+    { label: 'CSV Students csv', name: 'CSV', checked: false },
+    { label: 'SQL InsertStatement txt', name: 'SQL', checked: false }
+  ];
 
+  submitted: boolean = false;
+  selectedMaps: string[] = [];
   constructor(private router: Router) {}
 
   onSubmit() {
-    if (this.selectedMapsNumber < 2) {
+    this.updateSelectedMaps();
+    if (this.updateSelectedMaps.length < 2) {
       alert('Please select at least two checkboxes.');
       return;
     }
@@ -37,37 +42,29 @@ export class CreateServiceComponent {
     });
   }
 
+  selectAll() {
+    this.Maps.forEach(cb => cb.checked = true);
+    this.updateSelectedMaps();
+  }
+
+  deselectAll() {
+    this.Maps.forEach(cb => cb.checked = false);
+    this.updateSelectedMaps();
+  }
+
+  updateSelectedMaps(){
+    this.selectedMaps = this.Maps
+      .filter(cb => cb.checked)
+      .map(cb => cb.label);
+  }
+
   getSelectedMaps(): string { 
-    let selectedItems = this.selectedMapNames;
-    return selectedItems.length > 0 ? selectedItems.join(', ') + '' : 'No checkboxes selected';
+    this.updateSelectedMaps;
+    return this.selectedMaps.length > 0 ? this.selectedMaps.join(', ') + '' : 'No checkboxes selected';
   }
 
   get selectedMapsNumber(): number {
-    return this.selectedMapNames.length;
+    return this.selectedMaps.length;
   }
 
-  get selectedMapNames(): string[] {
-    let selectedItems = [];
-
-    if (this.FHIRR4JSON) {
-      selectedItems.push('FHIR R4 Json');
-    }
-    if (this.CCDAR2) {
-      selectedItems.push('CCDA 2.1 xml');
-    }
-    if (this.HL7V2) {
-      selectedItems.push('HL7 V2.8 txt');
-    }
-    if (this.X12278) {
-      selectedItems.push('X12 278 edi');
-    }
-    if (this.csv) {
-      selectedItems.push('CSV Students csv');
-    }
-    if (this.sql) {
-      selectedItems.push('SQL InsertStatement txt');
-    }
-
-    return selectedItems;
-  }
 }
