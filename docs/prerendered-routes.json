@@ -1,0 +1,6 @@
+{
+  "routes": {
+    "/mdmi-web-app": {},
+    "/mdmi-web-app/service-test": {}
+  }
+}
