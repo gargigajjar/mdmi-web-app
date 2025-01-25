@@ -24,7 +24,6 @@ export class CreateServiceComponent {
   ];
 
   submitted: boolean = false;
-  selectedMaps: string[] = [];
   constructor(private router: Router) { }
 
   onSubmit() {
