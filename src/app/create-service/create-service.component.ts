@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -25,11 +25,9 @@ export class CreateServiceComponent {
 
   submitted: boolean = false;
   selectedMaps: string[] = [];
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   onSubmit() {
-    this.updateSelectedMaps();
-    
     this.router.navigate(['/service-test'], {
       queryParams: {
         ServiceName: this.ServiceName,
@@ -41,28 +39,24 @@ export class CreateServiceComponent {
 
   selectAll() {
     this.Maps.forEach(cb => cb.checked = true);
-    this.updateSelectedMaps();
   }
 
   deselectAll() {
     this.Maps.forEach(cb => cb.checked = false);
-    this.updateSelectedMaps();
   }
 
-  updateSelectedMaps(){
-    this.selectedMaps = this.Maps
-      .filter(cb => cb.checked)
-      .map(cb => cb.label);
-  }
-
-  getSelectedMaps(): string { 
-    this.updateSelectedMaps;
-    return this.selectedMaps.length > 0 ? this.selectedMaps.join(', ') + '' : 'No checkboxes selected';
+  getSelectedMaps(): string {
+    let str:string = '';
+    this.Maps.filter(Map => Map.checked).forEach((Map)=>{
+      str += Map.label + ', ';
+    })
+    
+    return str.slice(0, -2);
   }
 
   get selectedMapsNumber(): number {
-    this.updateSelectedMaps;
-    return this.selectedMaps.length;
+    return this.Maps
+      .filter(cb => cb.checked).length;
   }
 
 }

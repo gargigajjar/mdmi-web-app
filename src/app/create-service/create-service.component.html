@@ -25,7 +25,7 @@
                 <div class="maps">
                     <div *ngFor="let map of Maps" class="checkboxclass">
                         <label class="checkboxtext">
-                            <input type="checkbox" [(ngModel)]="map.checked" name="map.name" (change)="updateSelectedMaps()">
+                            <input type="checkbox" [(ngModel)]="map.checked" name="map.name">
                             {{ map.label }}
                         </label>
                     </div>
