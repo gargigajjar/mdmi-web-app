@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateServiceComponent } from './create-service/create-service.component';
 import { ServiceTestComponent } from './service-test/service-test.component';
+import { MdmiImportComponent } from './mdmi-import/mdmi-import.component';
 
 export const routes: Routes = [
   { path: '', component: CreateServiceComponent }, // Default route
-  { path: 'service-test', component: ServiceTestComponent } // Route for result page
+  { path: 'service-test', component: ServiceTestComponent }, // Route for result page
+  { path: 'mdmi-import', component: MdmiImportComponent} // Route for import page
 ];
 
 @NgModule({

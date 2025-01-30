@@ -13,4 +13,8 @@ export class NavbarComponent {
   createService(){
     this.router.navigate(['/']);
   }
+
+  importMDMI(){
+    this.router.navigate(['/mdmi-import']);
+  }
 }

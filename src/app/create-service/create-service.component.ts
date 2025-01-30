@@ -58,4 +58,8 @@ export class CreateServiceComponent {
       .filter(cb => cb.checked).length;
   }
 
+  mdmiImport(){
+    this.router.navigate(['/mdmi-import']);
+  }
+
 }

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+        <h2 class="text-center text-primary mb-4">MDMI Import</h2>
+        <p>Select a file from your system<span class="required">*</span></p>
+        <p>(Supported file types are: csv, xml, xsd)</p>
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" class="input-box"
+                accept=".csv,.xml,.xsd" (input)="onTextInput()" required />
+
+            <label class="form-label">MDMI Map Name<span class="required">*</span></label>
+            <div class="mb-3">
+                <input type="text" id="mapName" name="mapName" placeholder="MDMIMapName.mdmi" [(ngModel)]="mapName"
+                    required #textmapNameRef="ngModel" class="extension" />
+                <div class="text-danger" *ngIf="textmapNameRef.invalid && textmapNameRef.touched">This
+                    field is required.</div>
+                <div class="text-danger" *ngIf="!isMdmiFile() && textmapNameRef.touched">
+                    <p>Please use <strong>.mdmi</strong> extension.</p>
+                </div>
+            </div>
+            <div class="submitbutton">
+                <button type="submit" class="btn btn-primary w-100" [disabled]="!selectedFile || !isMdmiFile() || !mapName">
+                    Import as MDMI Map</button>
+            </div>
+
+        </form>
+    </div>
+</div>

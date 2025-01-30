@@ -37,7 +37,7 @@
             <div class="submitbutton">
                 <button type="submit" class="btn btn-primary w-100"
                     [disabled]="form.invalid || selectedMapsNumber < 2">Create Service</button>
-                <a href="#" class="ask-question" onclick="askQuestion()">Create a custom MDMI map?</a>
+                <a href="/mdmi-import" class="ask-question" (click)="mdmiImport()">Create a custom MDMI map?</a>
             </div>
         </form>
     </div>
