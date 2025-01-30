@@ -53,18 +53,23 @@ img:hover {
 
 /* Responsive Navigation */
 @media (max-width: 768px) {
+
     .nav-links {
-        display: none;
-        flex-direction: column;
         position: absolute;
-        top: 50px;
         right: 0;
-        background: #444;
+        background-color: rgba(255, 255, 255, 0.3);
         width: 150px;
         padding: 10px;
     }
 
-    .nav-active {
-        display: flex;
+    .nav-links li {
+        padding: 10px 0;
+    }
+
+    .logo {
+        height: 30px;
+        width: auto;
+        max-width: 100px;
+        object-fit: contain;
     }
 }

@@ -10,6 +10,11 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   constructor(private router: Router) {}
   
+  isMenuOpen = false;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   createService(){
     this.router.navigate(['/']);
   }
