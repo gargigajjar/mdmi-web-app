@@ -10,8 +10,8 @@
                 </button>
             </div>
         </form>
-        <div class="submitbutton" (click)="nextStep()">
-            <button type="submit" class="btn btn-primary w-100" [disabled]="!isOneSelected()">
+        <div class="submitbutton">
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!isOneSelected()" (click)="nextStep()">
                 Enhance Mapping</button>
         </div>
         <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".mdmi" hidden>
