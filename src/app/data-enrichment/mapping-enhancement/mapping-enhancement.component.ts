@@ -58,6 +58,12 @@ export class MappingEnhancementComponent {
     });
   }
 
+  approveAll(){
+    this.rows.forEach((row) => {
+      row.status = true;
+    });
+  }
+
   approveRow(row: number) {
     this.rows[row].status = true;
   }
