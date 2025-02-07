@@ -52,6 +52,10 @@ export class MdmiImportComponent {
       this.fileError = true; // Show error if file is invalid or not selected
       return;
     }
-    console.log('File Selected:', this.mapName);
+    this.router.navigate(['/data-enrichment/select-map'], {
+      queryParams: {
+        mdmiMap: this.mapName
+      }
+    });
   }
 }

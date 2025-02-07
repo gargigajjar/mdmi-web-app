@@ -22,4 +22,8 @@ export class NavbarComponent {
   importMDMI(){
     this.router.navigate(['/mdmi-import']);
   }
+
+  dataEnrichment(){
+    this.router.navigate(['/data-enrichment/select-map']);
+  }
 }

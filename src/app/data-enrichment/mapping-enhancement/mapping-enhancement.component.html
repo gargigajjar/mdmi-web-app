@@ -1,0 +1,83 @@
+<div class="container">
+    <table class="table table-bordered table-hover table-responsive">
+        <caption>{{mapName}}</caption>
+        <thead class="thead-light">
+            <tr>
+                <th>Column Name</th>
+                <!--<th>Column Data</th>-->
+                <th>Context<span class="required">*</span></th>
+                <th>Value<span class="required">*</span></th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            <tr *ngFor="let row of rows; let i = index">
+                <td>
+                    {{ row.row }}
+                </td>
+                <!--
+                <td>
+                    {{ row.data }}
+                </td>
+                -->
+                <td>
+                    <select [(ngModel)]="row.context" class="form-select">
+                        <option *ngFor="let option of dropdownOptions[0]" [value]="option">{{ option }}</option>
+                    </select>
+                </td>
+                <td>
+                    <select [(ngModel)]="row.value" class="form-select">
+                        <option *ngFor="let option of dropdownOptions[1]" [value]="option">{{ option }}</option>
+                    </select>
+                </td>
+                <td>
+                    <select [(ngModel)]="row.role" class="form-select">
+                        <option *ngFor="let option of dropdownOptions[2]" [value]="option">{{ option }}</option>
+                    </select>
+                </td>
+                <td class="approve-column">
+                    <button class="btn btn-outline-primary approve-buttons" (click)="approveRow(i)"
+                        [ngClass]="{'selected': isApproved(i)}">Approve</button>
+                    <button class=" btn btn-outline-primary approve-buttons" (click)="disapproveRow(i)"
+                        [ngClass]=" {'selected': isDisapproved(i)}" (click)="openPopup(i)">Disapprove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="submitbutton">
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!selectedAll()">
+            Save Preferences</button>
+    </div>
+</div>
+
+<!-- The Modal (Popup) -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button class="close-btn" data-bs-dismiss="modal">✖</button>
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">{{ rowNum > -1 ? rows[rowNum].row : ''}}</h5>
+            </div>
+
+            <div class="modal-body">
+                {{ questions[currentStep] }}
+                <span *ngIf="currentStep < 2" style="color: red;">*</span>
+            </div>
+
+            <div class="modal-body">
+                <select class="form-select" [(ngModel)]="answers[currentStep]">
+                    <option></option>
+                    <option *ngFor="let option of dropdownOptions[currentStep]">{{ option }}</option>
+                </select>
+            </div>
+
+            <div class="modal-footer mt-3">
+                <button class="btn btn-secondary" (click)="prevStep()" *ngIf="currentStep > 0">Back</button>
+                <button class="btn btn-primary"
+                    (click)="currentStep < questions.length - 1 ? nextStep() : submitAnswers()">{{ currentStep <
+                        questions.length - 1 ? 'Next' : 'Submit' }}</button>
+            </div>
+        </div>
+    </div>
+</div>

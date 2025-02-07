@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+        <h2 class="text-center text-primary mb-4">Data Enrichment</h2>
+        <form>
+            <p>Select MDMI Map to continue<span class="required">*</span></p>
+            <div *ngIf="options && options.length > 0">
+                <button class="mapbutton" *ngFor="let option of options" (click)="selectOption(option)"
+                    [ngClass]="{'selected': option.isSelected}" (click)="option.isSelected = !option.isSelected">
+                    {{option.label}}
+                </button>
+            </div>
+        </form>
+        <div class="submitbutton" (click)="nextStep()">
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!isOneSelected()">
+                Enhance Mapping</button>
+        </div>
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".mdmi" hidden>
+        <label for="fileInput" class="link-label">Upload MDMI from file system?</label>
+    </div>
+</div>
