@@ -21,12 +21,12 @@
                     {{ row.data }}
                 </td>
                 -->
-                <td>
+                <td [ngClass]="{ 'no-value': !row.context }">
                     <select [(ngModel)]="row.context" class="form-select">
                         <option *ngFor="let option of dropdownOptions[0]" [value]="option">{{ option }}</option>
                     </select>
                 </td>
-                <td>
+                <td [ngClass]="{ 'no-value': !row.value }">
                     <select [(ngModel)]="row.value" class="form-select">
                         <option *ngFor="let option of dropdownOptions[1]" [value]="option">{{ option }}</option>
                     </select>

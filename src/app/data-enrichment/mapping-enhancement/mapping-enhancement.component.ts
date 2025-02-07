@@ -40,14 +40,14 @@ export class MappingEnhancementComponent {
     { row: 'Diagnosis 1', data: '689989', status: null, context: 'Condition', value: 'Code', role: 'Type' },
     { row: 'Diagnosis 2', data: '896587', status: null, context: 'Condition', value: 'Code', role: 'Type' },
     { row: 'Diagnosis 3', data: '656808', status: null, context: 'Condition', value: 'Code', role: 'Type' },
-    { row: 'Provider Type', data: 'PCP', status: null, context: 'Practitoner', value: 'Code', role: 'Type' }
+    { row: 'Provider Type', data: 'PCP', status: null, context: 'Practitioner', value: 'Code', role: 'Type' }
   ];
 
   currentStep = 0;
   questions = [
-    "Who or what does this data describe?",
+    "Who or what this data is about?",
     "What type of information does this data represent?",
-    "What specific detail or property of the entity does this data capture?"
+    "What specific detail or property of the entity does this data capture? (Select Blank if this does not apply)"
   ];
   answers: string[] = ["", "", ""];
   modalInstance: any;

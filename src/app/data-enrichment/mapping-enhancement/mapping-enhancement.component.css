@@ -27,6 +27,11 @@ th {
     color: #0056b3;
 }
 
+.no-value {
+    background-color: #ffcccc !important;
+    /* Light red background */
+}
+
 .selected {
     color: #fff;
     background-color: #0d6efd;
